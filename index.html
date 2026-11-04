@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko" data-tone="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src https://*.googleapis.com https://*.firebaseio.com wss://*.firebaseio.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,nofollow">
+<title>어라운드 속초 직원 포털</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <div class="brand">AROUND SOKCHO</div>
+
+  <figure class="sky">
+    <div id="bldg" class="bldg" role="img" aria-label="객실 47개가 있는 건물. 창의 불빛은 장식입니다."></div>
+    <figcaption>47개의 객실, 각자의 시간.</figcaption>
+  </figure>
+
+  <section id="view-wait" class="card" aria-live="polite">
+    <p class="sub" style="margin:0">잠시만요, 확인하고 있어요.</p>
+  </section>
+
+  <section id="view-login" class="card" hidden>
+    <h1>직원 로그인</h1>
+    <p class="sub">아이디와 비밀번호를 입력해 주세요.</p>
+    <form id="login-form" autocomplete="on" novalidate>
+      <label for="uid">아이디</label>
+      <input id="uid" name="username" type="text" inputmode="latin" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" required>
+      <label for="upw">비밀번호</label>
+      <input id="upw" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+      <button id="login-btn" class="btn" type="submit" disabled>들어가기</button>
+      <p id="login-msg" class="msg" role="alert" aria-live="assertive"></p>
+    </form>
+    <p class="alt"><a href="maid.html">객실 정비 담당이신가요?</a></p>
+  </section>
+
+  <section id="view-home" hidden>
+    <div class="home-head">
+      <h1 id="greet"></h1>
+      <button id="logout" class="btn ghost" type="button">로그아웃</button>
+    </div>
+    <div id="tiles" class="tiles" role="list"></div>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="skyline.js"></script>
+<script src="tiles.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

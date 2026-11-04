@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko" data-tone="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src https://cdn.jsdelivr.net https://fonts.gstatic.com; connect-src https://script.google.com https://script.googleusercontent.com; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,nofollow">
+<title>Around Sokcho · 객실 정비</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <div class="brand">AROUND SOKCHO</div>
+
+  <figure class="sky">
+    <div id="bldg" class="bldg" role="img" aria-label="객실 47개가 있는 건물. 창의 불빛은 장식입니다."></div>
+    <figcaption>47개의 객실, 각자의 시간.</figcaption>
+  </figure>
+
+  <section id="view-code" class="card">
+    <h1>정비 코드 <span style="font-weight:400;font-size:.7em;color:var(--ink2)">Access code</span></h1>
+    <p class="sub">매장에서 안내받은 6자리 숫자를 입력해 주세요.<br>Enter the 6-digit code from your manager.</p>
+    <form id="code-form" novalidate>
+      <label for="code">6자리 코드 / 6-digit code</label>
+      <input id="code" class="code-input" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" maxlength="6" placeholder="······" required>
+      <button id="code-btn" class="btn" type="submit">들어가기 / Enter</button>
+      <p id="code-msg" class="msg" role="alert" aria-live="assertive"></p>
+    </form>
+    <p class="alt"><a href="index.html">직원 로그인으로 돌아가기</a></p>
+  </section>
+
+  <section id="view-home" hidden>
+    <div class="home-head">
+      <h1>오늘도 수고 많으세요<br><span style="font-weight:400;font-size:.62em;color:var(--ink2)">Thank you for today</span></h1>
+      <button id="exit" class="btn ghost" type="button">나가기 / Exit</button>
+    </div>
+    <div id="tiles" class="tiles lg" role="list"></div>
+  </section>
+</main>
+
+<script src="maid-config.js"></script>
+<script src="skyline.js"></script>
+<script src="tiles.js"></script>
+<script src="maid.js"></script>
+</body>
+</html>
