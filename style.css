@@ -87,6 +87,9 @@ input::placeholder { color: var(--ink2); opacity: .7; }
 .btn:active { transform: scale(.985); }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--card-line); height: 46px; margin-top: 0; font-weight: 600; font-size: 15px; width: auto; padding: 0 18px; }
+.btn.ghost.warn { color: var(--danger); border-color: var(--danger); }
+.note { margin: 14px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--ink2); word-break: keep-all; }
+.note:empty { display: none; }
 .msg { min-height: 1.5em; margin: 14px 0 0; font-size: 14.5px; color: var(--danger); }
 .msg.info { color: var(--ink2); }
 .alt { text-align: center; margin: 4px 0 0; font-size: 14px; }
@@ -95,7 +98,8 @@ input::placeholder { color: var(--ink2); opacity: .7; }
 
 /* ── 타일 메뉴 ── */
 .home-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.home-head h1 { margin: 0; font-size: 22px; }
+.home-head h1 { margin: 0; font-size: 22px; flex: 1 1 0; min-width: 0; word-break: keep-all; }
+.home-head .btn.ghost { flex-shrink: 0; white-space: nowrap; }
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
 .tiles.lg { grid-template-columns: 1fr; }
 .tile {

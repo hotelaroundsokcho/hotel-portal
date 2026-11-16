@@ -67,7 +67,37 @@ async function startAuth() {
   let unsubStaff = null;
   const stopStaff = () => { if (unsubStaff) { unsubStaff(); unsubStaff = null; } };
 
+  /* 로그아웃은 두 번 눌러야 실행된다.
+     예약 인입 콘솔과 같은 Firebase 세션을 쓰므로, 포털에서 로그아웃하면 열어 둔 콘솔 탭의 새 예약 알림도 멈춘다.
+     실수로 누르는 것을 막기 위해 첫 번째 누름은 안내만 보여 주고 5초 안에 한 번 더 눌러야 한다. */
+  const LOGOUT_LABEL = '로그아웃';
+  const LOGOUT_ARMED_LABEL = '한 번 더 눌러 로그아웃';
+  const LOGOUT_NOTE = '로그아웃하면 예약 인입 콘솔도 함께 로그아웃돼요. 열어 둔 콘솔 탭의 새 예약 알림도 멈춰요.';
+  let logoutArmed = false;
+  let logoutTimer = 0;
+
+  function resetLogout() {
+    logoutArmed = false;
+    clearTimeout(logoutTimer);
+    logoutTimer = 0;
+    const btn = $('#logout');
+    btn.textContent = LOGOUT_LABEL;
+    btn.classList.remove('warn');
+    $('#logout-note').textContent = '';
+  }
+
+  function armLogout() {
+    logoutArmed = true;
+    const btn = $('#logout');
+    btn.textContent = LOGOUT_ARMED_LABEL;
+    btn.classList.add('warn');
+    $('#logout-note').textContent = LOGOUT_NOTE;
+    clearTimeout(logoutTimer);
+    logoutTimer = setTimeout(resetLogout, 5000);
+  }
+
   async function deny(message) {
+    resetLogout();
     stopStaff();
     try { await fb.A.signOut(fb.auth); } catch (e) { /* 이미 로그아웃 상태 */ }
     show('login');
@@ -115,5 +145,11 @@ async function startAuth() {
     }
   });
 
-  $('#logout').addEventListener('click', () => deny(''));
+  $('#logout').addEventListener('click', () => {
+    if (!logoutArmed) return armLogout();
+    deny('');
+  });
+  /* 다른 곳을 누르거나 Esc를 누르면 확인 상태를 해제한다 */
+  document.addEventListener('click', (ev) => { if (logoutArmed && !ev.target.closest('#logout')) resetLogout(); });
+  document.addEventListener('keydown', (ev) => { if (logoutArmed && ev.key === 'Escape') resetLogout(); });
 }
