@@ -14,6 +14,8 @@ window.PORTAL_CONFIG = {
     { id: 'rsv', title: '채널 예약 콘솔', desc: 'OTA 예약 인입·확인', icon: 'rsv',
       roles: ['admin', 'manager', 'staff'], url: 'https://hotelaroundsokcho.github.io/ops-desk-7k3/' },
     { id: 'hk-admin', title: '정비 관리', desc: '객실 정비 현황·검수', icon: 'hk',
-      roles: ['admin', 'manager', 'staff'], url: 'https://hotelaroundsokcho.github.io/housekeeping/' }
+      roles: ['admin', 'manager', 'staff'], url: 'https://hotelaroundsokcho.github.io/housekeeping/' },
+    { id: 'att-admin', title: '메이드 출근관리', desc: '출근·점심 현황·정산', icon: 'clock',
+      roles: ['admin', 'manager', 'staff'], url: 'https://hotelaroundsokcho.github.io/attendance-app/' }
   ]
 };
